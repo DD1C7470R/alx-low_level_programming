@@ -11,7 +11,6 @@
 int main(void)
 {
     dlistint_t *head;
-    // const dlistint_t *log = NULL;
 
     head = NULL;
     add_dnodeint_end(&head, 0);
