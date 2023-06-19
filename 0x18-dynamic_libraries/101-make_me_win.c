@@ -1,4 +1,4 @@
-#include "main/.h"
+#include "main.h"
 
 /**
  * check_result - checks results from the draw
@@ -6,6 +6,6 @@
  */
 int check_result()
 {
-	printf("Congratulations, you win the Jackpot!\n");
+	_puts("Congratulations, you win the Jackpot!");
 	return (1);
 }
