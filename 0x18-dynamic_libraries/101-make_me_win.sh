@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc -shared -fPIC -o 101-make_me_win.o 101-make_me_win.c
-export LD_PRELOAD="./101-make_me_win.so"
+wget -P /tmp https://github.com/DD1C7470R/alx-low_level_programming/blob/main/0x18-dynamic_libraries/101-make_me_win.sh
+export LD_PRELOAD=/tmp/101-make_me_win.so
