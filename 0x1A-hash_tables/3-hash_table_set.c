@@ -4,7 +4,7 @@
  * hash_table_set - implementation of table insertion
  * @ht: table to insert data
  * @key: key of value to insert
- * @key: value of key to insert
+ * @value: value of key to insert
  * Return: hash value
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
