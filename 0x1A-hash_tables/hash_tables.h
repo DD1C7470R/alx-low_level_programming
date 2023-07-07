@@ -24,7 +24,6 @@ typedef struct hash_node_s
  *
  * @size: The size of the array
  * @array: An array of size @size
- * @counter: number of key value pairs in array
  * Each cell of this array is a pointer to the first node of a linked list,
  * because we want our HashTable to use a Chaining collision handling
  */
@@ -32,7 +31,6 @@ typedef struct hash_table_s
 {
 	unsigned long int size;
 	hash_node_t **array;
-	unsigned long int counter;
 } hash_table_t;
 
 hash_table_t *hash_table_create(unsigned long int size);
