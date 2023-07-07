@@ -65,7 +65,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	new_node->value = strdup(value);
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
-	set_ext(ht, &(ht->shead), new_node, (char *)key);
+	set_ext(ht, ht->shead, new_node, (char *)key);
 	return (1);
 }
 /**
@@ -76,12 +76,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  * @key: key to insert
  * Return: hash value
  */
-void set_ext(shash_table_t *ht, shash_node_t **hn, shash_node_t *nn, char *key)
+void set_ext(shash_table_t *ht, shash_node_t *hn, shash_node_t *nn, char *key)
 {
 
 	shash_node_t  *tmp;
 
-	ht->shead = *hn;
+	ht->shead = hn;
 	if (ht->shead == NULL)
 	{
 		nn->sprev = NULL;
