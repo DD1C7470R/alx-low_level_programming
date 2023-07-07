@@ -25,8 +25,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	if (current_item != NULL)
 	{
-		if (strcmp(current_item->key, key) == 0)
-			return (current_item->value);
+		while (current->next != NULL && strcmp(current_item->key, key) != 0)
+			current_item = current_item->next;
+
+		return (current_item->value);
 	}
 
 	return (NULL);
