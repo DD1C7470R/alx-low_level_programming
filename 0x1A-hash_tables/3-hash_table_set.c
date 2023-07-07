@@ -11,6 +11,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long index;
 	hash_node_t *current_item;
+	hash_node_t *item;
 
 	if (ht == NULL || strlen(key) == 0 || strlen(value) == 0)
 		return (0);
@@ -30,7 +31,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		current_item = current_item->next;
 	}
 
-	hash_node_t *item = malloc(sizeof(hash_node_t));
+	item = malloc(sizeof(hash_node_t));
 
 	if (item == NULL)
 	{
