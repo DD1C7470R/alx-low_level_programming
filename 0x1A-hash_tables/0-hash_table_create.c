@@ -8,11 +8,12 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	unsigned long int idx;
-	hash_table_t *mytable = malloc(sizeof(hash_table_t));
+	hash_table_t *mytable;
 
 	if (size == 0)
 		return (NULL);
 
+	mytable = malloc(sizeof(hash_table_t));
 	if (mytable == NULL)
 	{
 		return (NULL);
