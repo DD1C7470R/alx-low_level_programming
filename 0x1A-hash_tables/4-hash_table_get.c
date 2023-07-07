@@ -25,7 +25,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	if (current_item != NULL)
 	{
-		while (current->next != NULL && strcmp(current_item->key, key) != 0)
+		while (current_item->next != NULL && strcmp(current_item->key, key) != 0)
 			current_item = current_item->next;
 
 		return (current_item->value);
