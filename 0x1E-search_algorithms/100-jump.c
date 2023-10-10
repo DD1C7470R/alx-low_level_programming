@@ -11,12 +11,12 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t step = (int)sqrt(size);
+	size_t step;
 	int prev = 0, i;
-	
+
 	if (array == NULL)
 		return (-1);
-
+	step = (int)sqrt(size);
 	while (array[prev] < value)
 	{
 		int cur = fmin(prev + step, size - 1);
