@@ -35,7 +35,7 @@ int jump_search(int *array, size_t size, int value)
 		}
 
 		prev = cur;
-		if (prev >= (int)size - 1)
+		if (prev >= (int)size)
 		{
 			return (-1);
 		}
