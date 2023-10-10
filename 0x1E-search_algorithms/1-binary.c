@@ -1,11 +1,11 @@
 #include "search_algos.h"
 
 /**
- * linear_search - Performs a linear search for a key value
+ * binary_search - Performs a linear search for a key value
  * @array: Array to search value
  * @size: size of input array
  * @value: value to search
- * Returns: 1 if found and -1 if not found
+ * Return: 1 if found and -1 if not found
  */
 int binary_search(int *array, size_t size, int value)
 {
@@ -19,13 +19,15 @@ int binary_search(int *array, size_t size, int value)
 	while (first_idx <= last_idx)
 	{
 		mid = first_idx + (last_idx - first_idx) / 2;
-        printf("Searching in array: ");
-        for (i=first_idx; i <= last_idx; i++) {
-            printf("%d", array[i]);
-            if (i < last_idx) {
-                printf(", ");
-            }
-        }
+		printf("Searching in array: ");
+		for (i = first_idx; i <= last_idx; i++)
+		{
+			printf("%d", array[i]);
+			if (i < last_idx)
+			{
+				printf(", ");
+			}
+		}
 		printf("\n");
 		if (array[mid] == value)
 		{
@@ -37,11 +39,11 @@ int binary_search(int *array, size_t size, int value)
 			first_idx = mid + 1;
 		}
 		else
-		{		
+		{
 			last_idx = mid - 1;
 		}
 	}
-	
+
 	return (-1);
 }
 
