@@ -1,80 +1,69 @@
 #include "search_algos.h"
-#include <math.h>
+
+
 
 /**
- * exponential_search - Recursive interpolation search
- * @arr: Array to search in
- * @key: Value to search
- * @size: Size of the array
- * Return: Index of the found value or -1 if not found
+ * _binary_search - searches for a value in a sorted array of integers
+ * using the binary search algorithm
+ * @array: array of integers
+ * @left: Left element
+ * @right: Right element
+ * @value: value to search for
+ * Return: index of value or -1 if not found
  */
-int exponential_search(int *arr, size_t size, int key)
+
+int _binary_search(int *array, size_t left, size_t right, int value)
 {
-	int bound;
 
-	if (arr == NULL || size == 0)
-	{
+	size_t i;
+
+	if (array == NULL)
 		return (-1);
-	}
 
-	bound = 1;
-	while (bound < (int)size && arr[bound] < key)
+	while (right > left)
 	{
-		printf("Value checked array[%d] = [%d]\n", bound, arr[bound]);
-		bound *= 2;
-	}
-
-	return (bin_search(arr, bound, size, key));
-}
-
-/**
- * bin_search - Performs a linear search for a key value
- * @array: Array to search value
- * @size: size of input array
- * @value: value to search
- * @bound: boundary to find value
- * Return: 1 if found and -1 if not found
- */
-int bin_search(int *array, int bound, size_t size, int value)
-{
-	size_t i = 0, first_idx = bound / 2, mid, last_idx;
-
-	if (array == NULL || size == 0)
-	{
-		return (-1);
-	}
-
-	last_idx = (size_t)bound > size ? size - 1 : (size_t)bound - 1;
-
-	printf("Value found between indexes [%lu] and [%lu]\n", first_idx, last_idx);
-	while (first_idx <= last_idx)
-	{
-		mid = first_idx + (last_idx - first_idx) / 2;
 		printf("Searching in array: ");
-		for (i = first_idx; i <= last_idx; i++)
-		{
-			printf("%d", array[i]);
-			if (i < last_idx)
-			{
-				printf(", ");
-			}
-		}
-		printf("\n");
+		for (i = left; i < right; i++)
+			printf("%d, ", array[i]);
+		printf("%d\n", array[i]);
 
-		if (array[mid] == value)
-		{
-			printf("\n");
-			return (mid);
-		}
-		else if (array[mid] < value)
-		{
-			first_idx = mid + 1;
-		}
+		i = left + (right - left) / 2;
+		if (array[i] == value)
+			return (i);
+		if (array[i] > value)
+			right = i - 1;
 		else
-		{
-			last_idx = mid - 1;
-		}
+			left = i + 1;
 	}
+
 	return (-1);
 }
 
+
+
+/**
+ * exponential_search -  a function that searches for
+ *  a value in a sorted array of integers
+ * @array: pointer to the first element of the array
+ * @size: size of the array to search in
+ * @value: value to search for
+ *Return: the index of the searched element
+ */
+
+int exponential_search(int *array, size_t size, int value)
+{
+	size_t i = 0, right;
+
+	if (array == NULL)
+		return (-1);
+
+	if (array[0] != value)
+	{
+		for (i = 1; i < size && array[i] <= value; i *= 2)
+			printf("Value checked array [%ld] = [%d]\n", i, array[i]);
+	}
+
+	right = i < size ? i : size - 1;
+	printf("Value found between indexes [%ld] and [%ld]\n", i / 2, right);
+	return (_binary_search(array, i / 2, right, value));
+}
