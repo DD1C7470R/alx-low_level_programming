@@ -18,7 +18,7 @@ int advanced_binary(int *array, size_t size, int value)
 }
 
 /**
- * advanced_binary_helper - recursive function
+ * advanced_binary_aux - recursive function
  *
  * @array: array
  * @min: min
