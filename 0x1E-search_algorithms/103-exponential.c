@@ -1,6 +1,5 @@
 #include "search_algos.h"
-
-int bin_search(int *array, int bound, size_t size, int value);
+#include <math.h>
 
 /**
  * exponential_search - Recursive interpolation search
@@ -9,7 +8,7 @@ int bin_search(int *array, int bound, size_t size, int value);
  * @size: Size of the array
  * Return: Index of the found value or -1 if not found
  */
-int exponential_search(int *arr, int size, int key)
+int exponential_search(int *arr, size_t size, int key)
 {
 	int bound;
 
@@ -19,7 +18,7 @@ int exponential_search(int *arr, int size, int key)
 	}
 
 	bound = 1;
-	while (bound < size && arr[bound] < key)
+	while (bound < (int)size && arr[bound] < key)
 	{
 		printf("Value checked array[%d] = [%d]\n", bound, arr[bound]);
 		bound *= 2;
@@ -45,7 +44,7 @@ int bin_search(int *array, int bound, size_t size, int value)
 		return (-1);
 	}
 
-	last_idx = fmin(bound + 1, size) - 1;
+	last_idx = bound - 1;
 
 	printf("Value found between indexes [%lu] and [%lu]\n", first_idx, last_idx);
 	while (first_idx <= last_idx)
