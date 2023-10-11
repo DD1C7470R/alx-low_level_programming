@@ -11,11 +11,15 @@
  */
 int interpol_search_rec(int *array, int low, int high, int value, size_t size)
 {
-	if (low <= high && value >= array[low] && value <= array[high])
-	{
-		int pos = low + ((double)(high - low)
+	int pos = low + ((double)(high - low)
 			/ (array[high] - array[low])) * (value - array[low]);
-
+	if (pos > high)
+	{
+		printf("Value checked array[%d] is out of range\n", pos);
+		return (-1);
+	}
+	if (pos <= high)
+	{
 		printf("Value checked array[%d] = [%d]\n", pos, array[pos]);
 
 		if (array[pos] == value)
