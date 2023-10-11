@@ -44,7 +44,7 @@ int bin_search(int *array, int bound, size_t size, int value)
 		return (-1);
 	}
 
-	last_idx = bound - 1;
+	last_idx = bound + 1 > size ? size - 1 : bound - 1;
 
 	printf("Value found between indexes [%lu] and [%lu]\n", first_idx, last_idx);
 	while (first_idx <= last_idx)
